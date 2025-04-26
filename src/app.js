@@ -21,7 +21,7 @@ function globalErrorHandler(err, _req, res, next) {
 app.use("/users", usersRouter);
 app.use(globalErrorHandler);
 app.use((_req, res, _next) =>
-  res.status(404).json("These are not the droids you're looking for.")
+  res.status(404).json("These are not the droids you're looking for."),
 );
 
 app.listen(PORT);
