@@ -16,6 +16,8 @@ const getUserById = async (req, res, _next) => {
   if (user && user.age > 21) {
     const formattedUser = pick(user, ["name", "age", "email"]);
     return res.status(200).json({ user: formattedUser });
+  } else if (user && user.age <= 21) {
+    return res.status(200).json({});
   } else {
     return res.status(404).json({ message: "not found" });
   }
