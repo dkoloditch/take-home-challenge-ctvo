@@ -1,0 +1,22 @@
+services:
+  server:
+    container_name: "server"
+    image: node:22.15.0-bookworm
+    working_dir: /app
+    command: sh -c "npm i && npm run dev"
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
+    depends_on:
+      - database
+    tty: true
+
+  database:
+    container_name: "mongodb"
+    image: mongodb/mongodb-community-server
+    ports:
+      - "27017:27017"
+
+volumes:
+  node_modules:
